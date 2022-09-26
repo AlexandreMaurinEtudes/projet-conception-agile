@@ -1,4 +1,4 @@
-package fr.icom.info.m1.balleauprisonnier_fx;
+package fr.icom.info.m1.balleauprisonnier_mvn;
 
 import javafx.scene.canvas.GraphicsContext;
 
