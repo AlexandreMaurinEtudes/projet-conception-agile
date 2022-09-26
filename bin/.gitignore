@@ -1,0 +1,17 @@
+# Ignore les fichiers de configuration d'Eclipse
+.classpath
+.project
+.settings/
+
+# Ignore les fichiers de configuration d'Intellij
+.idea/
+*.iml
+*.iws
+
+# Ignore le dossier Mac .DS_Store
+.DS_Store
+
+# Ignore les fichiers produits par Maven pour ne versionner que le code,
+# pas les executables ou les logs.
+log/
+target/
