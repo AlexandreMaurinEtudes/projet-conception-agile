@@ -1,4 +1,4 @@
-package fr.icom.info.m1.balleauprisonnier_mvn;
+package fr.icom.info.m1.balleauprisonnier_fx;
 
 
 import javafx.scene.canvas.GraphicsContext;
@@ -34,7 +34,7 @@ public class Player
 	   * @param color couleur du joueur
 	   * @param yInit position verticale
 	   */
-	  Player(GraphicsContext gc, String color, int xInit, int yInit, String side)
+	  Player(GraphicsContext gc, String color, int xInit, int yInit, String side, double defStep)
 	  {
 		// Tous les joueurs commencent au centre du canvas, 
 	    x = xInit;               
@@ -70,7 +70,7 @@ public class Player
         // step = randomGenerator.nextFloat();
 
         // Pour commencer les joueurs ont une vitesse / un pas fixe
-        step = 1;
+        step = defStep;
 	    
 	  }
 
@@ -149,6 +149,7 @@ public class Player
 
 	  void shoot(){
 	  	sprite.playShoot();
+	  	new Projectile(graphicsContext,x,y,angle);
 	  }
 	  
 	  /**

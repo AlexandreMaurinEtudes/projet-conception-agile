@@ -1,4 +1,4 @@
-package fr.icom.info.m1.balleauprisonnier_mvn;
+package fr.icom.info.m1.balleauprisonnier_fx;
 
 
 import java.util.ArrayList;
@@ -19,6 +19,7 @@ public class Field extends Canvas {
 	
 	/** Joueurs */
 	Player [] joueurs = new Player[2];
+	Player [] joueursIA = new Player[4];
 	/** Couleurs possibles */
 	String[] colorMap = new String[] {"blue", "green", "orange", "purple", "yellow"};
 	/** Tableau traçant les evenements */
@@ -48,12 +49,22 @@ public class Field extends Canvas {
         gc = this.getGraphicsContext2D();
         
         /** On initialise le terrain de jeu */
-    	joueurs[0] = new Player(gc, colorMap[0], w/2, h-50, "bottom");
+    	joueurs[0] = new Player(gc, colorMap[0], w/2, h-95, "bottom", 3);
     	joueurs[0].display();
 
-    	joueurs[1] = new Player(gc, colorMap[1], w/2, 20, "top");
+    	joueurs[1] = new Player(gc, colorMap[1], w/2, 45, "top", 2);
     	joueurs[1].display();
-
+    	
+    	/* IA */
+    	joueursIA[0] = new PlayerIA(gc, colorMap[0], w/3, h-70, "bottom", 5);
+    	joueursIA[0].display();
+    	joueursIA[2] = new PlayerIA(gc, colorMap[0], w - w/3, h-70, "bottom", 5);
+    	joueursIA[2].display();
+    	
+    	joueursIA[1] = new PlayerIA(gc, colorMap[1], w/3, 20, "top", 2);
+    	joueursIA[1].display();
+    	joueursIA[3] = new PlayerIA(gc, colorMap[1], w - w/3, 20, "top", 2);
+    	joueursIA[3].display();
 
 	    /** 
 	     * Event Listener du clavier 
@@ -122,7 +133,10 @@ public class Field extends Canvas {
 	        		{
 	        			joueurs[i].turnRight();	        			
 	        		}
-	        		if (i==1 && input.contains("A"))
+	        		if (i==0 && input.contains("SPACE")){
+	        			joueurs[i].shoot();
+					}
+	        		if (i==1 && input.contains("Q"))
 	        		{
 	        			joueurs[i].moveLeft();
 	        		} 
@@ -130,7 +144,7 @@ public class Field extends Canvas {
 	        		{
 	        			joueurs[i].moveRight();	        			
 	        		}
-	        		if (i==1 && input.contains("W"))
+	        		if (i==1 && input.contains("Z"))
 	        		{
 	        			joueurs[i].turnLeft();
 	        		} 
@@ -138,13 +152,17 @@ public class Field extends Canvas {
 	        		{
 	        			joueurs[i].turnRight();	        			
 	        		}
-	        		if (input.contains("SPACE")){
+	        		if (i==1 && input.contains("A")){
 	        			joueurs[i].shoot();
 					}
 
-	        		
 	        		joueurs[i].display();
 	    	    }
+	        	
+	        	for (int i = 0; i < joueursIA.length; i++) {
+	        		joueursIA[i].display();
+	        	}
+	        	
 	    	}
 	     }.start(); // On lance la boucle de rafraichissement 
 	     
@@ -152,5 +170,9 @@ public class Field extends Canvas {
 
 	public Player[] getJoueurs() {
 		return joueurs;
+	}
+	
+	public Player[] getJoueursIA() {
+		return joueursIA;
 	}
 }
