@@ -14,7 +14,7 @@ public class Projectile {
 		this.y = y;
 		this.angle = angle;
 		
-		projectileImage = new Image("assets/orc.png");
+		projectileImage = new Image("assets/boule.png");
 		gc.drawImage(projectileImage, x, y);
 	}
 }
