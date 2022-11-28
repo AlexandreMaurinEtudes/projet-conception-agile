@@ -47,7 +47,7 @@ public class Controles {
 				joueurs[i].shoot();
 			}
 
-			joueurs[i].display();
+			joueurs[i].display(); //TODO:separer dans vue
 		}
 
 		/*

@@ -55,21 +55,14 @@ public class Field extends Canvas {
 
 		/** On initialise le terrain de jeu */
 		joueurs[0] = new Player(this, colorMap[0], w / 2, h - 95, "bottom", 3);
-		joueurs[0].display();
-
 		joueurs[1] = new Player(this, colorMap[1], w / 2, 45, "top", 2);
-		joueurs[1].display();
 
 		/* IA */
 		joueursIA[0] = new PlayerIA(this, colorMap[0], w / 3, h - 70, "bottom", 5);
-		// joueursIA[0].display();
 		joueursIA[2] = new PlayerIA(this, colorMap[0], w - w / 3, h - 70, "bottom", 5);
-		joueursIA[2].display();
 
 		joueursIA[1] = new PlayerIA(this, colorMap[1], w / 3, 20, "top", 2);
-		// joueursIA[1].display();
 		joueursIA[3] = new PlayerIA(this, colorMap[1], w - w / 3, 20, "top", 2);
-		// joueursIA[3].display();
 
 		/**
 		 * Event Listener du clavier quand une touche est pressee on la rajoute a la
@@ -97,17 +90,8 @@ public class Field extends Canvas {
 			}
 		});
 
-		/**
-		 * 
-		 * Boucle principale du jeu
-		 * 
-		 * handle() est appelee a chaque rafraichissement de frame soit environ 60 fois
-		 * par seconde.
-		 * 
-		 */
-
 	}
-
+	
 	public Player[] getJoueurs() {
 		return joueurs;
 	}
@@ -115,17 +99,4 @@ public class Field extends Canvas {
 	public Player[] getJoueursIA() {
 		return joueursIA;
 	}
-
-	// ------- TEST -------
-
-	// TODO:supprimer fonctions tests
-	public void supprimerJoueur() {
-		joueurs[0] = null;
-	}
-
-	public void ajouterElement(Node e) { // supprimer ou refaire
-		Platform.runLater(() -> this.scene.getRoot().getChildrenUnmodifiable().add(e));
-		// this.scene.getRoot().getChildrenUnmodifiable().add(e);
-		// //.getChildren().add(e);
-	} // javafx de ses morts
 }
