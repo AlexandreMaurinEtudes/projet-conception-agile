@@ -1,7 +1,7 @@
-package fr.icom.info.m1.balleauprisonnier_mvn.entities;
+package fr.icom.info.m1.balleauprisonnier_mvn.modeles.entities;
 
-import fr.icom.info.m1.balleauprisonnier_mvn.Field;
 import fr.icom.info.m1.balleauprisonnier_mvn.maths.Vector2;
+import fr.icom.info.m1.balleauprisonnier_mvn.modeles.Field;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.util.Duration;

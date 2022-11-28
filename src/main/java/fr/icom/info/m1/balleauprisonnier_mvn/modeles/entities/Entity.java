@@ -1,10 +1,10 @@
-package fr.icom.info.m1.balleauprisonnier_mvn.entities;
+package fr.icom.info.m1.balleauprisonnier_mvn.modeles.entities;
 
-import fr.icom.info.m1.balleauprisonnier_mvn.Field;
 import fr.icom.info.m1.balleauprisonnier_mvn.maths.Vector2;
+import fr.icom.info.m1.balleauprisonnier_mvn.modeles.Field;
 import javafx.scene.canvas.GraphicsContext;
 
-public class Entity {
+abstract class Entity {
 	// une entité charge sur un terrain (cela nous permet notamment de supprimer
 	// notre entité plus simplement)
 	Field field;

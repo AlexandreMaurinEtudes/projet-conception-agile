@@ -1,6 +1,6 @@
-package fr.icom.info.m1.balleauprisonnier_mvn.entities;
+package fr.icom.info.m1.balleauprisonnier_mvn.modeles.entities;
 
-import fr.icom.info.m1.balleauprisonnier_mvn.Field;
+import fr.icom.info.m1.balleauprisonnier_mvn.modeles.Field;
 
 public class PlayerIA extends Player {
 

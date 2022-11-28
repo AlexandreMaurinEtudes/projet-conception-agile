@@ -1,6 +1,6 @@
-package fr.icom.info.m1.balleauprisonnier_mvn.entities;
+package fr.icom.info.m1.balleauprisonnier_mvn.modeles.entities;
 
-import fr.icom.info.m1.balleauprisonnier_mvn.Field;
+import fr.icom.info.m1.balleauprisonnier_mvn.modeles.Field;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.transform.Rotate;
 import javafx.scene.image.Image;
@@ -68,7 +68,7 @@ public class Player extends Entity {
 	}
 
 	/**
-	 * Affichage du joueur
+	 * GameLoop du joueur
 	 */
 	@Override
 	public void display() {
