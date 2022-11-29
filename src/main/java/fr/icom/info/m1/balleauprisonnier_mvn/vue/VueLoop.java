@@ -7,8 +7,8 @@ import javafx.scene.paint.Color;
 
 public class VueLoop {
 	private static VueLoop instance = new VueLoop();
-	Field field;
-	GraphicsContext gc;
+	private Field field;
+	private GraphicsContext gc;
 	
 	private VueLoop() {
 	}
@@ -23,7 +23,6 @@ public class VueLoop {
 	}
 	
 	public void refreshCanvas() {
-		// On nettoie le canvas a chaque frame
 		gc.setFill(Color.LIGHTGRAY);
 		gc.fillRect(0, 0, field.width, field.height);
 	}

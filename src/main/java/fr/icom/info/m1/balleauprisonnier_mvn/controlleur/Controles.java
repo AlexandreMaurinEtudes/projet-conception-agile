@@ -13,8 +13,14 @@ public class Controles {
 		this.input = input;
 	}
 	
-	public void mouvements() {
-		// Deplacement et affichage des joueurs
+	public void gameControles() {
+		//touche de contrôles en jeu
+		//menu pause
+		if (input.contains("ESCAPE")) {
+			System.out.println("PAUSE"); //TODO:Mettre le jeu en pause
+			return; //on retourne pour ne pas exécuter le code après
+		}
+		// touches de deplacement des joueurs
 		for (int i = 0; i < joueurs.length; i++) {
 			if (i == 0 && input.contains("LEFT")) {
 				joueurs[i].moveLeft();

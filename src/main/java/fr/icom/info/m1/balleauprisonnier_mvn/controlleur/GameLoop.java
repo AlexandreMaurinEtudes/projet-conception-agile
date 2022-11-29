@@ -25,8 +25,11 @@ public class GameLoop {
 		
 		new AnimationTimer() {
 			public void handle(long currentNanoTime) {
+				// On nettoie le canvas a chaque frame
 				vue.refreshCanvas();
-				controles.mouvements();
+				//touches claviers
+				controles.gameControles();
+				//affichage joueur
 				vue.entitiesRender(joueurs);
 			}
 		}.start(); // On lance la boucle de rafraichissement
