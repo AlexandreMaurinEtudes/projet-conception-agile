@@ -19,12 +19,13 @@ public class GameLoop {
 		Player[] joueurs = field.joueurs;
 		// Player[] joueursIA = field.joueursIA;
 		
-		VueLoop vue = new VueLoop(gc); //attention devra être changé en singleton
-		Controles controles = new Controles(joueurs, input); //idem
+		VueLoop vue = VueLoop.getInstance();
+		vue.init(field);
+		Controles controles = new Controles(joueurs, input); //TODO:Singleton exactement comme pour VueLoop
 		
 		new AnimationTimer() {
 			public void handle(long currentNanoTime) {
-				vue.refreshCanvas(field.width, field.height);
+				vue.refreshCanvas();
 				controles.mouvements();
 				vue.entitiesRender(joueurs);
 			}
