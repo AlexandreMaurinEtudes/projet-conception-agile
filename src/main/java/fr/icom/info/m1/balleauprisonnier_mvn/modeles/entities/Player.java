@@ -131,7 +131,7 @@ public class Player extends Entity {
 
 	public void shoot() {
 		getSprite().playShoot();
-		new Projectile(field, position.x, position.y, angle, 1);
+		//new Projectile(field, position.x, position.y, angle, 1);
 	}
 
 	/**
