@@ -46,15 +46,6 @@ public class Controles {
 			if (i == 1 && input.contains("A")) {
 				joueurs[i].shoot();
 			}
-
-			joueurs[i].display(); //TODO:separer dans vue
 		}
-
-		/*
-		 * for (int i = 0; i < joueursIA.length; i++) { joueursIA[i].display(); }
-		 */
-
-		// balle.display();
-
 	}
 }

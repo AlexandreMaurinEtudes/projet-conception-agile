@@ -26,6 +26,7 @@ public class GameLoop {
 			public void handle(long currentNanoTime) {
 				vue.refreshCanvas(field.width, field.height);
 				controles.mouvements();
+				vue.entitiesRender(joueurs);
 			}
 		}.start(); // On lance la boucle de rafraichissement
 	}

@@ -4,7 +4,7 @@ import fr.icom.info.m1.balleauprisonnier_mvn.maths.Vector2;
 import fr.icom.info.m1.balleauprisonnier_mvn.modeles.Field;
 import javafx.scene.canvas.GraphicsContext;
 
-abstract class Entity {
+public abstract class Entity {
 	// une entité charge sur un terrain (cela nous permet notamment de supprimer
 	// notre entité plus simplement)
 	Field field;
