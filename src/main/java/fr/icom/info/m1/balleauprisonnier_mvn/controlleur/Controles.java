@@ -5,10 +5,17 @@ import java.util.ArrayList;
 import fr.icom.info.m1.balleauprisonnier_mvn.modeles.entities.Player;
 
 public class Controles {
-	Player[] joueurs;
-	ArrayList<String> input;
+	private static Controles instance = new Controles();
+	private Player[] joueurs;
+	private ArrayList<String> input;
 	
-	public Controles(Player[] joueurs, ArrayList<String> input) {
+	private Controles() {}
+	
+	public static Controles getInstance() {
+		return instance;
+	}
+	
+	public void init(Player[] joueurs, ArrayList<String> input) {
 		this.joueurs = joueurs;
 		this.input = input;
 	}

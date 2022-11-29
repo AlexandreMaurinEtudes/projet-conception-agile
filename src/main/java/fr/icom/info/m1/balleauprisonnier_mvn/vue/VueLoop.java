@@ -10,8 +10,7 @@ public class VueLoop {
 	private Field field;
 	private GraphicsContext gc;
 	
-	private VueLoop() {
-	}
+	private VueLoop() {}
 	
 	public static VueLoop getInstance() {
 		return instance;

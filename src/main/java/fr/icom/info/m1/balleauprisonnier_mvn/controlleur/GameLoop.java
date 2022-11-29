@@ -7,7 +7,6 @@ import fr.icom.info.m1.balleauprisonnier_mvn.modeles.entities.Player;
 import fr.icom.info.m1.balleauprisonnier_mvn.vue.VueLoop;
 import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
 
 public class GameLoop {
 	GraphicsContext gc;
@@ -21,7 +20,8 @@ public class GameLoop {
 		
 		VueLoop vue = VueLoop.getInstance();
 		vue.init(field);
-		Controles controles = new Controles(joueurs, input); //TODO:Singleton exactement comme pour VueLoop
+		Controles controles = Controles.getInstance();
+		controles.init(joueurs, input);
 		
 		new AnimationTimer() {
 			public void handle(long currentNanoTime) {
