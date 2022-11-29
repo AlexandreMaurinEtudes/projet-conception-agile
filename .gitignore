@@ -15,3 +15,6 @@
 # pas les executables ou les logs.
 log/
 target/
+
+#ignore les fichiers de compilation binaries
+bin/
