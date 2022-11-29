@@ -4,16 +4,11 @@ import java.util.ArrayList;
 
 import fr.icom.info.m1.balleauprisonnier_mvn.modeles.entities.Player;
 import fr.icom.info.m1.balleauprisonnier_mvn.modeles.entities.PlayerIA;
-import fr.icom.info.m1.balleauprisonnier_mvn.modeles.entities.Projectile;
-import javafx.animation.AnimationTimer;
-import javafx.application.Platform;
 import javafx.event.EventHandler;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.paint.Color;
 
 /**
  * Classe gerant le terrain de jeu.
@@ -24,7 +19,6 @@ public class Field extends Canvas {
 	/** Joueurs */
 	public Player[] joueurs = new Player[2];
 	Player[] joueursIA = new Player[4];
-	Projectile balle = new Projectile(this, 300, 300, 0, 1);
 	/** Couleurs possibles */
 	String[] colorMap = new String[] { "blue", "green", "orange", "purple", "yellow" };
 	/** Tableau traçant les evenements */
