@@ -6,7 +6,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public class VueLoop {
-	private static VueLoop instance;
+	private static VueLoop instance = new VueLoop();
 	Field field;
 	GraphicsContext gc;
 	
@@ -14,9 +14,6 @@ public class VueLoop {
 	}
 	
 	public static VueLoop getInstance() {
-		if (instance==null) {
-			instance = new VueLoop();
-		}
 		return instance;
 	}
 	
