@@ -1,16 +1,18 @@
 package fr.icom.info.m1.balleauprisonnier_mvn.modeles.entities;
 
-import fr.icom.info.m1.balleauprisonnier_mvn.maths.Vector2;
 import fr.icom.info.m1.balleauprisonnier_mvn.modeles.Field;
 import javafx.scene.image.Image;
 
 public class Projectile extends Entity {
 	private static Projectile instance;
-	Image projectileImage;
-	double angle;
-	int velocity;
-	Sprite sprite;
-
+	private Image projectileImage;
+	private double angle;
+	private double velocity;
+	private Player player;
+	private String side;
+	/* offset de la balle quand tenue par un joueur (en y)*/
+	private int offset = 20;
+	
 	private Projectile(Field field, int x, int y, double angle, int velocity) {
 		super(field, x, y);
 		this.angle = angle;
@@ -19,7 +21,7 @@ public class Projectile extends Entity {
 		projectileImage = new Image("assets/boule.png");
 	}
 	
-	public Projectile init(Field field, int x, int y, double angle, int velocity) {
+	public static Projectile init(Field field, int x, int y, double angle, int velocity) {
 		instance = new Projectile(field, x, y, angle, velocity);
 		return instance;
 	}
@@ -29,23 +31,43 @@ public class Projectile extends Entity {
 		return instance;
 	}
 
-	public Vector2 updatePosition() {
-		this.position.add(1, 1);
-		return this.position;
+	public void updatePosition() {
+		if (player != null) {
+			this.position.x = player.position.x;
+			this.position.y = player.position.y + ((player.side == "bottom") ? -offset : offset);;
+		}
+		else {
+			if (side == "bottom") {
+				this.position.add(Math.cos(Math.toRadians(90-angle)) * velocity, -Math.sin(Math.toRadians(90-angle)) * velocity);
+			}
+			else {
+				this.position.add(-Math.cos(Math.toRadians(90-angle)) * velocity, Math.sin(Math.toRadians(90-angle)) * velocity);
+			}
+		}
 	}
 	
+	
+	public void attach(Player player) {
+		//method pour attacher la balle à un joueur
+		this.player = player;
+		this.side = player.side;
+	}
+	
+	public void dettach() {
+		//method pour déttacher la balle d'un joueur
+		this.player = null;
+	}
+	
+	public void setAngle(double angle) {
+		this.angle = angle;
+	}
+	
+	public void setVelocity(double velocity) {
+		this.velocity = velocity;
+	}
 	
 	@Override
 	public void display() {
 		gc.drawImage(projectileImage, position.x, position.y);
-	}
-	
-
-	public Sprite getSprite() {
-		return sprite;
-	}
-
-	public void setSprite(Sprite sprite) {
-		this.sprite = sprite;
 	}
 }

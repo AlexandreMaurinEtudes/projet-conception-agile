@@ -16,6 +16,7 @@ public class Player extends Entity {
 	private double angle = 90; // rotation du joueur, devrait toujour être en 0 et 180
 	private double step; // pas d'un joueur
 	final String playerColor;
+	public final String side;
 
 	// On une image globale du joueur
 	Image directionArrow;
@@ -35,6 +36,7 @@ public class Player extends Entity {
 		super(field, xInit, yInit);
 		graphicsContext = this.gc;
 		playerColor = color;
+		this.side = side;
 
 		angle = 0;
 
@@ -131,7 +133,10 @@ public class Player extends Entity {
 
 	public void shoot() {
 		getSprite().playShoot();
-		//new Projectile(field, position.x, position.y, angle, 1);
+		Projectile balle = Projectile.getInstance();
+		balle.setAngle(angle);
+		balle.setVelocity(1);
+		balle.dettach();
 	}
 
 	/**

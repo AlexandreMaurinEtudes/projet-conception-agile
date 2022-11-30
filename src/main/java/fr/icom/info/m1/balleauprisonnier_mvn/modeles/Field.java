@@ -1,14 +1,11 @@
 package fr.icom.info.m1.balleauprisonnier_mvn.modeles;
 
-import java.util.ArrayList;
-
 import fr.icom.info.m1.balleauprisonnier_mvn.modeles.entities.Player;
 import fr.icom.info.m1.balleauprisonnier_mvn.modeles.entities.PlayerIA;
-import javafx.event.EventHandler;
+import fr.icom.info.m1.balleauprisonnier_mvn.modeles.entities.Projectile;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.input.KeyEvent;
 
 /**
  * Classe gerant le terrain de jeu.
@@ -19,10 +16,10 @@ public class Field extends Canvas {
 	/** Joueurs */
 	public Player[] joueurs = new Player[2];
 	Player[] joueursIA = new Player[4];
+	/** balle */
+	public Projectile balle = Projectile.init(this, 0, 0, 0, 0);
 	/** Couleurs possibles */
 	String[] colorMap = new String[] { "blue", "green", "orange", "purple", "yellow" };
-	/** Tableau traçant les evenements */
-	public ArrayList<String> input = new ArrayList<String>();
 
 	Scene scene;
 	final GraphicsContext gc;
@@ -57,33 +54,11 @@ public class Field extends Canvas {
 
 		joueursIA[1] = new PlayerIA(this, colorMap[1], w / 3, 20, "top", 2);
 		joueursIA[3] = new PlayerIA(this, colorMap[1], w - w / 3, 20, "top", 2);
-
-		/**
-		 * Event Listener du clavier quand une touche est pressee on la rajoute a la
-		 * liste d'input
-		 * 
-		 */
-		this.setOnKeyPressed(new EventHandler<KeyEvent>() {
-			public void handle(KeyEvent e) {
-				String code = e.getCode().toString();
-				// only add once... prevent duplicates
-				if (!input.contains(code))
-					input.add(code);
-			}
-		});
-
-		/**
-		 * Event Listener du clavier quand une touche est relachee on l'enleve de la
-		 * liste d'input
-		 * 
-		 */
-		this.setOnKeyReleased(new EventHandler<KeyEvent>() {
-			public void handle(KeyEvent e) {
-				String code = e.getCode().toString();
-				input.remove(code);
-			}
-		});
-
+		
+		/* balle */
+		balle = Projectile.init(this, 0, 0, 0, 0);
+		balle.attach(joueurs[1]); //on attache la balle au joueur 1
+		
 	}
 	
 	public Player[] getJoueurs() {
