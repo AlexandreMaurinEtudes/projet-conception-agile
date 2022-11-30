@@ -6,7 +6,7 @@ import fr.icom.info.m1.balleauprisonnier_mvn.modeles.Field;
 import fr.icom.info.m1.balleauprisonnier_mvn.modeles.entities.Player;
 import fr.icom.info.m1.balleauprisonnier_mvn.modeles.entities.PlayerIA;
 import fr.icom.info.m1.balleauprisonnier_mvn.modeles.entities.Projectile;
-import fr.icom.info.m1.balleauprisonnier_mvn.vue.VueLoop;
+import fr.icom.info.m1.balleauprisonnier_mvn.vue.Affichage;
 import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
@@ -20,7 +20,7 @@ public class GameLoop {
 		PlayerIA[] joueursIA = field.joueursIA;
 		Projectile balle = field.balle;
 		
-		VueLoop vue = VueLoop.getInstance();
+		Affichage vue = Affichage.getInstance();
 		vue.init(field);
 		Controles controles = Controles.getInstance();
 		controles.init(joueurs, input);

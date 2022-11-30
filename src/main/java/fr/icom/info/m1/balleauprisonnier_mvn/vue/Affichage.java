@@ -5,14 +5,14 @@ import fr.icom.info.m1.balleauprisonnier_mvn.modeles.entities.Entity;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-public class VueLoop {
-	private static VueLoop instance = new VueLoop();
+public class Affichage {
+	private static Affichage instance = new Affichage();
 	private Field field;
 	private GraphicsContext gc;
 	
-	private VueLoop() {}
+	private Affichage() {}
 	
-	public static VueLoop getInstance() {
+	public static Affichage getInstance() {
 		return instance;
 	}
 	
