@@ -178,6 +178,7 @@ public class Player extends Entity {
 		alive = false;
 		this.setVisible(false);
 		this.sprite.setVisible(false);
+		/* on affiche une pierre tombale au moment de la mort*/
 		graphicsContext.drawImage(new Image("assets/gravestone.png"), position.x + 20, position.y);
 	}
 	
