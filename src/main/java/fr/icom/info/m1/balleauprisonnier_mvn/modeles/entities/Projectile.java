@@ -35,9 +35,6 @@ public class Projectile extends Entity {
 			this.position.y = player.position.y + ((player.side == "bottom") ? -offset : offset);;
 		}
 		else {
-			if (this.position.y > field.height - 100) {
-				return;
-			}
 			this.position.add(velocity.x, velocity.y);
 		}
 	}
@@ -69,16 +66,25 @@ public class Projectile extends Entity {
 	}
 	
 	public boolean collision(Player joueur) {
-		if (joueur.side == this.side) { // on empêche les joueurs d'une même équipe de se toucher entre eux
-			return false;
-		}
 		return joueur.getSprite().getBoundsInParent().intersects(position.x,position.y,projectileImage.getWidth(),projectileImage.getHeight());
 	}
 	
 	public void collision(Field field) {
+		if (this.position.y < projectileImage.getHeight() || this.position.y > field.height - projectileImage.getHeight()) {
+			this.velocity.y = 0;
+			this.velocity.x = 0;
+		}
 		if (this.position.x < projectileImage.getWidth() || this.position.x > field.width - projectileImage.getWidth()) {
 			this.velocity.x = - this.velocity.x;
 		}
+	}
+	
+	public Vector2 getVelocity() {
+		return this.velocity;
+	}
+	
+	public String getSide() {
+		return this.side;
 	}
 	
 	@Override

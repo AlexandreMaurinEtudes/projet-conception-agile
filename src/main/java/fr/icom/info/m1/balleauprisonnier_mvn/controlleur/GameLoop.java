@@ -16,7 +16,7 @@ public class GameLoop {
 
 	public GameLoop(Field field) {
 		Player[] joueurs = field.joueurs;
-		//Player[] joueursIA = field.joueursIA;
+		Player[] joueursIA = field.joueursIA;
 		Projectile balle = field.balle;
 		
 		VueLoop vue = VueLoop.getInstance();
@@ -56,14 +56,32 @@ public class GameLoop {
 				//affichage balle
 				balle.display();
 				//collision joueurs
-				for (Player joueur : joueurs) { //attention ajouter joueursIA aussi
-					if (balle.collision(joueur)) {
-						System.out.println("PAF"); //if velocity = 0 (quand la balle arrete de bouger, alors pickup
-					}
-				}
+				playerCollide(joueurs, balle);
+				playerCollide(joueursIA, balle);
 				//collision terrain
 				balle.collision(field);
 			}
 		}.start(); // On lance la boucle de rafraichissement
+	}
+	
+	
+	private void playerCollide(Player[] players, Projectile projectile) {
+		for (Player joueur : players) {
+			if (projectile.collision(joueur)) {
+				if (Math.abs(projectile.getVelocity().y) <= 0.05 && projectile.getPlayer() == null) { 
+					/*
+					 * balle qui ne bouge plus sur l'axe y, on peut pickup
+					 * (on ignore la vélocité en x car on considère ça comme une passe à son équipe)
+					 */
+					projectile.attach(joueur);
+				}
+				else {
+					if (joueur.side != projectile.getSide()) {
+						//si la balle a touché un joueur adversaire (on empêche les joueurs d'une même équipe de s'éliminer entre eux)
+						;//TODO:Mort du joueur
+					}
+				}
+			}
+		}
 	}
 }

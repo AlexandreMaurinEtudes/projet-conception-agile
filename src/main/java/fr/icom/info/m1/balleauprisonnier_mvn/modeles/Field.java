@@ -45,8 +45,8 @@ public class Field extends Canvas {
 		gc = this.getGraphicsContext2D();
 
 		/** On initialise le terrain de jeu */
-		joueurs[0] = new Player(this, colorMap[0], w / 2, h - 95, "bottom", 3);
-		joueurs[1] = new Player(this, colorMap[1], w / 2, 45, "top", 2);
+		joueurs[0] = new Player(this, colorMap[0], w / 2, h - 70, "bottom", 3);
+		joueurs[1] = new Player(this, colorMap[1], w / 2, 20, "top", 2);
 
 		/* IA */
 		joueursIA[0] = new PlayerIA(this, colorMap[0], w / 3, h - 70, "bottom", 5);
