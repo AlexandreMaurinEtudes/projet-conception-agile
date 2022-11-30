@@ -2,6 +2,7 @@ package fr.icom.info.m1.balleauprisonnier_mvn.modeles.entities;
 
 import fr.icom.info.m1.balleauprisonnier_mvn.maths.Vector2;
 import fr.icom.info.m1.balleauprisonnier_mvn.modeles.Field;
+import javafx.geometry.BoundingBox;
 import javafx.scene.canvas.GraphicsContext;
 
 public abstract class Entity {

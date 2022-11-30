@@ -56,6 +56,12 @@ public class GameLoop {
 				//affichage balle
 				balle.display();
 				
+				for (Player joueur : joueurs) {
+					if (balle.collision(joueur)) {
+						System.out.println("PAF");
+					}
+				}
+				
 			}
 		}.start(); // On lance la boucle de rafraichissement
 	}

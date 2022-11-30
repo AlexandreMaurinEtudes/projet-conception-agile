@@ -2,6 +2,7 @@ package fr.icom.info.m1.balleauprisonnier_mvn.modeles.entities;
 
 import fr.icom.info.m1.balleauprisonnier_mvn.modeles.Field;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class Projectile extends Entity {
 	private static Projectile instance;
@@ -18,7 +19,7 @@ public class Projectile extends Entity {
 		this.angle = angle;
 		this.velocity = velocity;
 
-		projectileImage = new Image("assets/boule.png");
+		projectileImage = new Image("assets/boule.png");	
 	}
 	
 	public static Projectile init(Field field, int x, int y, double angle, int velocity) {
@@ -68,6 +69,13 @@ public class Projectile extends Entity {
 	
 	public Player getPlayer() {
 		return this.player;
+	}
+	
+	public boolean collision(Player joueur) {
+		if (joueur.side == this.side) { // on empêche les joueurs d'une même équipe de se toucher entre eux
+			return false;
+		}
+		return joueur.getSprite().getBoundsInParent().intersects(position.x,position.y,projectileImage.getWidth(),projectileImage.getHeight());
 	}
 	
 	@Override
