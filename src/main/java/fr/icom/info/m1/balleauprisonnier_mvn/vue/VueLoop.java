@@ -28,7 +28,7 @@ public class VueLoop {
 	
 	public void entitiesRender(Entity[] entities) {
 		for (Entity entity : entities) {
-			entity.display();
+			if (entity.isVisible()) entity.display();
 		}
 	}
 	

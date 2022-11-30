@@ -29,34 +29,34 @@ public class Controles {
 		}
 		// touches de deplacement des joueurs
 		for (int i = 0; i < joueurs.length; i++) {
-			if (i == 0 && input.contains("LEFT")) {
+			if (i == 0 && input.contains("LEFT") && joueurs[i].isAlive()) {
 				joueurs[i].moveLeft();
 			}
-			if (i == 0 && input.contains("RIGHT")) {
+			if (i == 0 && input.contains("RIGHT") && joueurs[i].isAlive()) {
 				joueurs[i].moveRight();
 			}
-			if (i == 0 && input.contains("UP")) {
+			if (i == 0 && input.contains("UP") && joueurs[i].isAlive()) {
 				joueurs[i].turnLeft();
 			}
-			if (i == 0 && input.contains("DOWN")) {
+			if (i == 0 && input.contains("DOWN") && joueurs[i].isAlive()) {
 				joueurs[i].turnRight();
 			}
-			if (i == 0 && input.contains("SPACE")) {
+			if (i == 0 && input.contains("SPACE") && joueurs[i].isAlive()) {
 				joueurs[i].shoot();
 			}
-			if (i == 1 && input.contains("Q")) {
+			if (i == 1 && input.contains("Q") && joueurs[i].isAlive()) {
 				joueurs[i].moveLeft();
 			}
-			if (i == 1 && input.contains("D")) {
+			if (i == 1 && input.contains("D") && joueurs[i].isAlive()) {
 				joueurs[i].moveRight();
 			}
-			if (i == 1 && input.contains("Z")) {
+			if (i == 1 && input.contains("Z") && joueurs[i].isAlive()) {
 				joueurs[i].turnLeft();
 			}
-			if (i == 1 && input.contains("S")) {
+			if (i == 1 && input.contains("S") && joueurs[i].isAlive()) {
 				joueurs[i].turnRight();
 			}
-			if (i == 1 && input.contains("A")) {
+			if (i == 1 && input.contains("A") && joueurs[i].isAlive()) {
 				joueurs[i].shoot();
 			}
 		}

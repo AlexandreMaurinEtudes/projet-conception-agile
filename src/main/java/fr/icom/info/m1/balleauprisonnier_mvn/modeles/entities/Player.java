@@ -18,6 +18,7 @@ public class Player extends Entity {
 	final String playerColor;
 	public final String side;
 	private double force = 1.0;
+	private boolean alive = true;
 
 	// On une image globale du joueur
 	Image directionArrow;
@@ -157,7 +158,6 @@ public class Player extends Entity {
 	}
 
 	public void spriteAnimate() {
-		// System.out.println("Animating sprite");
 		if (!getSprite().isRunning) {
 			getSprite().playContinuously();
 		}
@@ -168,9 +168,21 @@ public class Player extends Entity {
 	public Sprite getSprite() {
 		return sprite;
 	}
-
+	
 	public void setSprite(Sprite sprite) {
 		this.sprite = sprite;
+	}
+	
+	
+	public void kill() {
+		alive = false;
+		this.setVisible(false);
+		this.sprite.setVisible(false);
+		graphicsContext.drawImage(new Image("assets/gravestone.png"), position.x + 20, position.y);
+	}
+	
+	public boolean isAlive() {
+		return alive;
 	}
 
 }

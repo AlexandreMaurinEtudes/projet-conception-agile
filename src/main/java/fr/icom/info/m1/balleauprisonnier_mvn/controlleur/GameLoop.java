@@ -73,12 +73,12 @@ public class GameLoop {
 					 * balle qui ne bouge plus sur l'axe y, on peut pickup
 					 * (on ignore la vélocité en x car on considère ça comme une passe à son équipe)
 					 */
-					projectile.attach(joueur);
+					if (joueur.isAlive()) projectile.attach(joueur);
 				}
 				else {
 					if (joueur.side != projectile.getSide()) {
 						//si la balle a touché un joueur adversaire (on empêche les joueurs d'une même équipe de s'éliminer entre eux)
-						;//TODO:Mort du joueur
+						joueur.kill();
 					}
 				}
 			}

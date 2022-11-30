@@ -12,6 +12,8 @@ public abstract class Entity {
 	GraphicsContext gc;
 	// une entité possède une position sur le Canvas
 	Vector2 position = new Vector2();
+	// la visibilité d'une entité
+	private boolean visible = true;
 
 	protected Entity(Field field, int x, int y) {
 		this.field = field;
@@ -22,4 +24,12 @@ public abstract class Entity {
 	
 	// une entité doit posséder une methode permettant sont affichage
 	public abstract void display();
+	
+	public boolean isVisible() {
+		return visible;
+	}
+	
+	public void setVisible(boolean value) {
+		visible = value;
+	}
 }
