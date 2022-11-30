@@ -66,6 +66,10 @@ public class Projectile extends Entity {
 		this.velocity = velocity;
 	}
 	
+	public Player getPlayer() {
+		return this.player;
+	}
+	
 	@Override
 	public void display() {
 		gc.drawImage(projectileImage, position.x, position.y);

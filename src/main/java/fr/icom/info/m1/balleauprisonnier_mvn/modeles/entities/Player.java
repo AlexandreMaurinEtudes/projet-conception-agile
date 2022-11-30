@@ -91,7 +91,7 @@ public class Player extends Entity {
 	 */
 
 	public void moveLeft() {
-		if (position.x > 10 && position.x < 520) {
+		if (position.x > 10 && position.x <= field.width) {
 			spriteAnimate();
 			position.x -= step;
 		}
@@ -101,9 +101,8 @@ public class Player extends Entity {
 	 * Deplacement du joueur vers la droite
 	 */
 	public void moveRight() {
-		if (position.x > 10 && position.x < 520) {
+		if (position.x >= 0 && position.x < 520) {
 			spriteAnimate();
-			// this.move((int) (position.x + step), position.y);
 			position.x += step;
 		}
 	}
@@ -132,11 +131,15 @@ public class Player extends Entity {
 	}
 
 	public void shoot() {
-		getSprite().playShoot();
 		Projectile balle = Projectile.getInstance();
-		balle.setAngle(angle);
-		balle.setVelocity(1);
-		balle.dettach();
+		//le joueur ne peut tirer que s'il a la balle
+		if (balle.getPlayer() == this) {
+			getSprite().playShoot();
+			balle.setAngle(angle);
+			balle.setVelocity(1);
+			balle.dettach();
+		}
+		
 	}
 
 	/**
