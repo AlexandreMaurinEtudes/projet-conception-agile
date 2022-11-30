@@ -8,6 +8,8 @@ public class Controles {
 	private static Controles instance = new Controles();
 	private Player[] joueurs;
 	private ArrayList<String> input;
+	private boolean pause = false;
+	
 	
 	private Controles() {}
 	
@@ -22,11 +24,8 @@ public class Controles {
 	
 	public void gameControles() {
 		//touche de contrôles en jeu
-		//menu pause
-		if (input.contains("ESCAPE")) {
-			System.out.println("PAUSE"); //TODO:Mettre le jeu en pause
-			return; //on retourne pour ne pas exécuter le code après
-		}
+		//check pause
+		pauseControle();
 		// touches de deplacement des joueurs
 		for (int i = 0; i < joueurs.length; i++) {
 			//si le joueur est mort on passe directement au suivant
@@ -62,5 +61,17 @@ public class Controles {
 				joueurs[i].shoot();
 			}
 		}
+	}
+	public boolean getPaused() {
+		return pause;
+	}
+
+	public void pauseControle() {
+		if (input.contains("ESCAPE") || input.contains("P")) {
+			if (pause) pause = false;
+			else pause = true;
+			input.removeAll(input);
+		}
+		
 	}
 }

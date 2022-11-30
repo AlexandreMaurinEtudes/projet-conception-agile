@@ -45,21 +45,27 @@ public class GameLoop {
 		
 		new AnimationTimer() {
 			public void handle(long currentNanoTime) {
-				// On nettoie le canvas a chaque frame
-				vue.refreshCanvas();
-				//touches claviers
-				controles.gameControles();
-				//on met à jour la position de la balle
-				balle.updatePosition();
-				//affichage joueurs
-				vue.entitiesRender(joueurs);
-				//affichage balle
-				balle.display();
-				//collision joueurs
-				playerCollide(joueurs, balle);
-				playerCollide(joueursIA, balle);
-				//collision terrain
-				balle.collision(field);
+				if (controles.getPaused()) {
+					//jeu en pause
+					controles.pauseControle();
+				}
+				else {
+					// On nettoie le canvas a chaque frame
+					vue.refreshCanvas();
+					//touches claviers
+					controles.gameControles();
+					//on met à jour la position de la balle
+					balle.updatePosition();
+					//affichage joueurs
+					vue.entitiesRender(joueurs);
+					//affichage balle
+					balle.display();
+					//collision joueurs
+					playerCollide(joueurs, balle);
+					playerCollide(joueursIA, balle);
+					//collision terrain
+					balle.collision(field);
+				}
 			}
 		}.start(); // On lance la boucle de rafraichissement
 	}
