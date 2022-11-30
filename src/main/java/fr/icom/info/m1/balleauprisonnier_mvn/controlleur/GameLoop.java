@@ -45,7 +45,7 @@ public class GameLoop {
 		
 		new AnimationTimer() {
 			public void handle(long currentNanoTime) {
-				// On nettoie le canvas a chaque fzsqzdrame
+				// On nettoie le canvas a chaque frame
 				vue.refreshCanvas();
 				//touches claviers
 				controles.gameControles();

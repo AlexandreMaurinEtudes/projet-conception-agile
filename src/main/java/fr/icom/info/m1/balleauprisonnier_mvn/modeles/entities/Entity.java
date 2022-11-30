@@ -20,6 +20,6 @@ public abstract class Entity {
 		this.position.y = y;
 	}
 	
-	// une entité doit posséderr une methode permettant sont affichage
+	// une entité doit posséder une methode permettant sont affichage
 	public abstract void display();
 }
