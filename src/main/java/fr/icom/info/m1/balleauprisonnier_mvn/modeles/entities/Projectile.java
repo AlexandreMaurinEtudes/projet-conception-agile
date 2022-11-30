@@ -75,6 +75,12 @@ public class Projectile extends Entity {
 		return joueur.getSprite().getBoundsInParent().intersects(position.x,position.y,projectileImage.getWidth(),projectileImage.getHeight());
 	}
 	
+	public void collision(Field field) {
+		if (this.position.x < projectileImage.getWidth() || this.position.x > field.width - projectileImage.getWidth()) {
+			this.velocity.x = - this.velocity.x;
+		}
+	}
+	
 	@Override
 	public void display() {
 		gc.drawImage(projectileImage, position.x, position.y);

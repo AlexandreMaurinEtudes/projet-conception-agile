@@ -15,7 +15,7 @@ public class Field extends Canvas {
 
 	/** Joueurs */
 	public Player[] joueurs = new Player[2];
-	Player[] joueursIA = new Player[4];
+	public Player[] joueursIA = new Player[4];
 	/** balle */
 	public Projectile balle;
 	/** Couleurs possibles */

@@ -16,7 +16,7 @@ public class GameLoop {
 
 	public GameLoop(Field field) {
 		Player[] joueurs = field.joueurs;
-		// Player[] joueursIA = field.joueursIA;
+		//Player[] joueursIA = field.joueursIA;
 		Projectile balle = field.balle;
 		
 		VueLoop vue = VueLoop.getInstance();
@@ -55,13 +55,14 @@ public class GameLoop {
 				vue.entitiesRender(joueurs);
 				//affichage balle
 				balle.display();
-				
+				//collision joueurs
 				for (Player joueur : joueurs) { //attention ajouter joueursIA aussi
 					if (balle.collision(joueur)) {
 						System.out.println("PAF"); //if velocity = 0 (quand la balle arrete de bouger, alors pickup
 					}
 				}
-				
+				//collision terrain
+				balle.collision(field);
 			}
 		}.start(); // On lance la boucle de rafraichissement
 	}
