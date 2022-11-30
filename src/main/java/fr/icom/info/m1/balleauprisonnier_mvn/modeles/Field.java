@@ -15,7 +15,7 @@ public class Field extends Canvas {
 
 	/** Joueurs */
 	public Player[] joueurs = new Player[2];
-	public Player[] joueursIA = new Player[4];
+	public PlayerIA[] joueursIA = new PlayerIA[4];
 	/** balle */
 	public Projectile balle;
 	/** Couleurs possibles */
@@ -49,11 +49,11 @@ public class Field extends Canvas {
 		joueurs[1] = new Player(this, colorMap[1], w / 2, 20, "top", 2);
 
 		/* IA */
-		joueursIA[0] = new PlayerIA(this, colorMap[0], w / 3, h - 70, "bottom", 5);
-		joueursIA[2] = new PlayerIA(this, colorMap[0], w - w / 3, h - 70, "bottom", 5);
+		joueursIA[0] = new PlayerIA(this, colorMap[0], w / 3, h - 70, "bottom", 5, "easy");
+		joueursIA[2] = new PlayerIA(this, colorMap[0], w - w / 3, h - 70, "bottom", 5, "medium");
 
-		joueursIA[1] = new PlayerIA(this, colorMap[1], w / 3, 20, "top", 2);
-		joueursIA[3] = new PlayerIA(this, colorMap[1], w - w / 3, 20, "top", 2);
+		joueursIA[1] = new PlayerIA(this, colorMap[1], w / 3, 20, "top", 2, "medium");
+		joueursIA[3] = new PlayerIA(this, colorMap[1], w - w / 3, 20, "top", 2, "easy");
 		
 		/* balle */
 		balle = Projectile.init(this, 0, 0);

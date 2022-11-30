@@ -173,6 +173,10 @@ public class Player extends Entity {
 		this.sprite = sprite;
 	}
 	
+	protected void setAngle(int angle) {
+		this.angle = Math.abs(angle % 180);
+	}
+	
 	
 	public void kill() {
 		alive = false;

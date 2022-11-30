@@ -13,6 +13,9 @@ public class Projectile extends Entity {
 	/* offset de la balle quand tenue par un joueur (en y)*/
 	private int offset = 20;
 	
+	
+	public final double NULL_VELOCITY = 0.05;
+	
 	private Projectile(Field field, int x, int y) {
 		super(field, x, y);
 
@@ -32,7 +35,7 @@ public class Projectile extends Entity {
 	public void updatePosition() {
 		if (player != null) {
 			this.position.x = player.position.x;
-			this.position.y = player.position.y + ((player.side == "bottom") ? -offset : offset);;
+			this.position.y = player.position.y + ((player.side == "bottom") ? -offset : offset);
 		}
 		else {
 			this.position.add(velocity.x, velocity.y);

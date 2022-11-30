@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import fr.icom.info.m1.balleauprisonnier_mvn.modeles.Field;
 import fr.icom.info.m1.balleauprisonnier_mvn.modeles.entities.Player;
+import fr.icom.info.m1.balleauprisonnier_mvn.modeles.entities.PlayerIA;
 import fr.icom.info.m1.balleauprisonnier_mvn.modeles.entities.Projectile;
 import fr.icom.info.m1.balleauprisonnier_mvn.vue.VueLoop;
 import javafx.animation.AnimationTimer;
@@ -16,7 +17,7 @@ public class GameLoop {
 
 	public GameLoop(Field field) {
 		Player[] joueurs = field.joueurs;
-		Player[] joueursIA = field.joueursIA;
+		PlayerIA[] joueursIA = field.joueursIA;
 		Projectile balle = field.balle;
 		
 		VueLoop vue = VueLoop.getInstance();
@@ -52,8 +53,10 @@ public class GameLoop {
 				else {
 					// On nettoie le canvas a chaque frame
 					vue.refreshCanvas();
-					//touches claviers
+					//touches claviers (déplacements joueurs)
 					controles.gameControles();
+					//mouvements IA
+					IAstrategy(joueursIA);
 					//on met à jour la position de la balle
 					balle.updatePosition();
 					//affichage joueurs
@@ -74,7 +77,7 @@ public class GameLoop {
 	private void playerCollide(Player[] players, Projectile projectile) {
 		for (Player joueur : players) {
 			if (projectile.collision(joueur)) {
-				if (Math.abs(projectile.getVelocity().y) <= 0.05 && projectile.getPlayer() == null) { 
+				if (Math.abs(projectile.getVelocity().y) <= projectile.NULL_VELOCITY && projectile.getPlayer() == null) { 
 					/*
 					 * balle qui ne bouge plus sur l'axe y, on peut pickup
 					 * (on ignore la vélocité en x car on considère ça comme une passe à son équipe)
@@ -82,12 +85,17 @@ public class GameLoop {
 					if (joueur.isAlive()) projectile.attach(joueur);
 				}
 				else {
-					if (joueur.side != projectile.getSide()) {
+					if (joueur.side != projectile.getSide() && joueur.isAlive()) {
 						//si la balle a touché un joueur adversaire (on empêche les joueurs d'une même équipe de s'éliminer entre eux)
 						joueur.kill();
 					}
 				}
 			}
+		}
+	}
+	private void IAstrategy(PlayerIA[] IAs) {
+		for (PlayerIA ia : IAs) {
+			if (ia.isAlive()) ia.strategy();
 		}
 	}
 }
