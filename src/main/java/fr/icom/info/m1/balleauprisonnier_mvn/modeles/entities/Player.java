@@ -17,6 +17,7 @@ public class Player extends Entity {
 	private double step; // pas d'un joueur
 	final String playerColor;
 	public final String side;
+	private double force = 1.0;
 
 	// On une image globale du joueur
 	Image directionArrow;
@@ -135,8 +136,13 @@ public class Player extends Entity {
 		//le joueur ne peut tirer que s'il a la balle
 		if (balle.getPlayer() == this) {
 			getSprite().playShoot();
-			balle.setAngle(angle);
-			balle.setVelocity(1);
+			if (side == "bottom") {
+				balle.setVelocity(Math.cos(Math.toRadians(90-angle)) * force, -Math.sin(Math.toRadians(90-angle)) * force);
+			}
+			else {
+				balle.setVelocity(-Math.cos(Math.toRadians(90-angle)) * force, Math.sin(Math.toRadians(90-angle)) * force);
+			}
+			
 			balle.dettach();
 		}
 		

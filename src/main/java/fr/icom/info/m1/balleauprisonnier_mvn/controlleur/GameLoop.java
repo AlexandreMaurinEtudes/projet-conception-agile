@@ -45,7 +45,7 @@ public class GameLoop {
 		
 		new AnimationTimer() {
 			public void handle(long currentNanoTime) {
-				// On nettoie le canvas a chaque frame
+				// On nettoie le canvas a chaque fzsqzdrame
 				vue.refreshCanvas();
 				//touches claviers
 				controles.gameControles();
@@ -56,9 +56,9 @@ public class GameLoop {
 				//affichage balle
 				balle.display();
 				
-				for (Player joueur : joueurs) {
+				for (Player joueur : joueurs) { //attention ajouter joueursIA aussi
 					if (balle.collision(joueur)) {
-						System.out.println("PAF");
+						System.out.println("PAF"); //if velocity = 0 (quand la balle arrete de bouger, alors pickup
 					}
 				}
 				

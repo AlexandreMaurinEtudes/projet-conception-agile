@@ -1,29 +1,26 @@
 package fr.icom.info.m1.balleauprisonnier_mvn.modeles.entities;
 
+import fr.icom.info.m1.balleauprisonnier_mvn.maths.Vector2;
 import fr.icom.info.m1.balleauprisonnier_mvn.modeles.Field;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 public class Projectile extends Entity {
 	private static Projectile instance;
 	private Image projectileImage;
-	private double angle;
-	private double velocity;
+	private Vector2 velocity = new Vector2(0.0, 0.0);
 	private Player player;
 	private String side;
 	/* offset de la balle quand tenue par un joueur (en y)*/
 	private int offset = 20;
 	
-	private Projectile(Field field, int x, int y, double angle, int velocity) {
+	private Projectile(Field field, int x, int y) {
 		super(field, x, y);
-		this.angle = angle;
-		this.velocity = velocity;
 
 		projectileImage = new Image("assets/boule.png");	
 	}
 	
-	public static Projectile init(Field field, int x, int y, double angle, int velocity) {
-		instance = new Projectile(field, x, y, angle, velocity);
+	public static Projectile init(Field field, int x, int y) {
+		instance = new Projectile(field, x, y);
 		return instance;
 	}
 	
@@ -38,12 +35,10 @@ public class Projectile extends Entity {
 			this.position.y = player.position.y + ((player.side == "bottom") ? -offset : offset);;
 		}
 		else {
-			if (side == "bottom") {
-				this.position.add(Math.cos(Math.toRadians(90-angle)) * velocity, -Math.sin(Math.toRadians(90-angle)) * velocity);
+			if (this.position.y > field.height - 100) {
+				return;
 			}
-			else {
-				this.position.add(-Math.cos(Math.toRadians(90-angle)) * velocity, Math.sin(Math.toRadians(90-angle)) * velocity);
-			}
+			this.position.add(velocity.x, velocity.y);
 		}
 	}
 	
@@ -59,12 +54,14 @@ public class Projectile extends Entity {
 		this.player = null;
 	}
 	
-	public void setAngle(double angle) {
-		this.angle = angle;
+	public void setVelocity(double x, double y) {
+		this.velocity.x = x;
+		this.velocity.y = y;
 	}
 	
-	public void setVelocity(double velocity) {
-		this.velocity = velocity;
+	public void setVelocity(Vector2 v) {
+		this.velocity.x = v.x;
+		this.velocity.y = v.y;
 	}
 	
 	public Player getPlayer() {

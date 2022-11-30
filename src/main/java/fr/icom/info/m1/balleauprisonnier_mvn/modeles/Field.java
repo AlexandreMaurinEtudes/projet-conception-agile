@@ -17,7 +17,7 @@ public class Field extends Canvas {
 	public Player[] joueurs = new Player[2];
 	Player[] joueursIA = new Player[4];
 	/** balle */
-	public Projectile balle = Projectile.init(this, 0, 0, 0, 0);
+	public Projectile balle;
 	/** Couleurs possibles */
 	String[] colorMap = new String[] { "blue", "green", "orange", "purple", "yellow" };
 
@@ -56,7 +56,7 @@ public class Field extends Canvas {
 		joueursIA[3] = new PlayerIA(this, colorMap[1], w - w / 3, 20, "top", 2);
 		
 		/* balle */
-		balle = Projectile.init(this, 0, 0, 0, 0);
+		balle = Projectile.init(this, 0, 0);
 		balle.attach(joueurs[1]); //on attache la balle au joueur 1
 		
 	}
